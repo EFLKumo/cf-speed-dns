@@ -12,8 +12,6 @@ CF_DNS_NAME     =   os.environ["CF_DNS_NAME"]
 # pushplus_token
 PUSHPLUS_TOKEN  =   os.environ["PUSHPLUS_TOKEN"]
 
-
-
 headers = {
     'Authorization': f'Bearer {CF_API_TOKEN}',
     'Content-Type': 'application/json'
@@ -90,7 +88,7 @@ def main():
     domains = CF_DNS_NAME.split(',')
     push_plus_content = []
     # 遍历 IP 地址列表
-    for domain in enumerate(domains):
+    for domain in domains:
         dns_records = get_dns_records(domain)
         for index, ip_address in enumerate(ip_addresses):
             # 执行 DNS 变更
