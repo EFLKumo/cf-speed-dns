@@ -24,6 +24,7 @@ def get_cf_speed_test_ip(timeout=10, max_retries=5):
             response = requests.get('https://ip.164746.xyz/ipTop.html', timeout=timeout)
             # 检查响应状态码
             if response.status_code == 200:
+                print('IP: '+response.text)
                 return response.text
         except Exception as e:
             traceback.print_exc()
@@ -64,7 +65,7 @@ def update_dns_record(record_id, name, cf_ip):
     else:
         traceback.print_exc()
         print(f"cf_dns_change ERROR: ---- Time: " + str(
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())) + " ---- MESSAGE: " + str(code))
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())) + " ---- MESSAGE: " + str(code) + name + cf_ip)
         return "ip:" + str(cf_ip) + "解析" + str(name) + "失败"
 
 # 消息推送
