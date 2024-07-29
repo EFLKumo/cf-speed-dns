@@ -24,6 +24,7 @@ def get_cf_speed_test_ip(timeout=10, max_retries=5):
             response = requests.get('https://ip.164746.xyz/ipTop.html', timeout=timeout)
             # 检查响应状态码
             if response.status_code == 200:
+                print('gcfstip '+response.text)
                 return response.text
         except Exception as e:
             traceback.print_exc()
@@ -41,6 +42,7 @@ def get_dns_records(name):
         for record in records:
             if record['name'] == name:
                 def_info.append(record['id'])
+                print('record id ' + record['id'])
         return def_info
     else:
         print('Error fetching DNS records:', response.text)
